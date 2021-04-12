@@ -1,0 +1,66 @@
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content= "width= device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title> Catálogo de Clientes </title>
+  <style>
+  @import 'CatalogCliente.css';
+</style>
+</head>
+
+<body>
+  <h1> Catálogo-Clientes </h1>
+  <!-- Script for table template component, calls correspondent component id: grid-template in JS file-->
+  <script type="text/x-template" id="grid-template">
+    <table>
+      <thead>
+        <tr>
+          <th v-for="key in columns"
+            @click="sortBy(key)"
+            :class="{ active: sortKey == key }">
+            {{ key | capitalize }}
+            <span class="arrow" :class="sortOrders[key] > 0 ? 'asc' : 'dsc'">
+            </span>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="entry in filteredData">
+          <td v-for="key in columns">
+            {{entry[key]}}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </script>
+
+  <!--script for Vue app-->
+
+  <div id="demo">
+    <!-- Receives user input from the text area, stores them in variables in the JS file-->
+    <input v-model="cCompania" placeholder="Compañia">
+    <input v-model="cCliente" placeholder="Cliente">
+    <input v-model="cName1" placeholder="NombreA">
+    <input v-model="cName2" placeholder="NombreB">
+    <!-- el estatus eventualmente se mostrara como una lista para seleccionar de los posibles estatus, esto esta aqui como placeholder -->
+    <input v-model="cEstatus" placeholder="Estatus">
+    <br>
+    <button @click="signUpCompany"> Dar de alta </button>
+    <button @click="Reporte"> Reporte </button>
+    <!-- Input for string filtering in the table component-->
+    <form id="search">
+      Search <input name="query" v-model="searchQuery">
+    </form>
+    <demo-grid
+      :data="gridData"
+      :columns="gridColumns"
+      :filter-key="searchQuery">
+    </demo-grid>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+  <script src= "CatalogCliente.js"></script>
+</body>
+
+</html>
