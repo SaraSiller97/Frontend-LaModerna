@@ -1,0 +1,18 @@
+#content {
+  overflow:auto;
+  width: 600px;
+  background: gray;
+}
+
+#left, #right {
+  width: 47%;
+  margin: 1px;
+  padding: 1em;
+  border: 1px solid ;
+  border-color: black;
+  min-height: 300px;
+  overflow: auto;
+}
+
+#left  { float:left;  }
+#right { float:right; }
