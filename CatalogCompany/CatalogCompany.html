@@ -12,6 +12,7 @@
 
 <body>
   <h1> Catálogo-Compañías </h1>
+  <!-- Script for table template component, calls correspondent component id: grid-template in JS file-->
   <script type="text/x-template" id="grid-template">
     <table>
       <thead>
@@ -35,12 +36,15 @@
     </table>
   </script>
 
-  <!-- demo root element -->
+  <!--script for Vue app-->
+
   <div id="demo">
+    <!-- Receives user input from the text area, stores them in variables in the JS file-->
     <input v-model="cId" placeholder="ID">
     <input v-model="cName" placeholder="Compañía">
     <br>
     <button @click="signUpCompany"> Dar de alta </button>
+    <!-- Input for string filtering in the table component-->
     <form id="search">
       Search <input name="query" v-model="searchQuery">
     </form>
@@ -50,6 +54,7 @@
       :filter-key="searchQuery">
     </demo-grid>
   </div>
+  <!-- Imports vue and calls JS file-->
   <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
   <script src= "CatalogCompany.js"></script>
 </body>

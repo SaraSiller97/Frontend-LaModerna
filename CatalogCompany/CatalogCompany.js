@@ -1,3 +1,4 @@
+//Table component functions and data
 Vue.component('demo-grid', {
   template: '#grid-template',
   props: {
@@ -17,6 +18,7 @@ Vue.component('demo-grid', {
     }
 
   },
+  //complex logic goes in computed:
   computed: {
     filteredData: function () {
       var sortKey = this.sortKey
@@ -53,14 +55,16 @@ Vue.component('demo-grid', {
   }
 })
 
-
+//functions and data for the Vue app
 var demo = new Vue({
   el: '#demo',
   data: {
     cId:'',
     cName:'',
     searchQuery: '',
+    //modify this to change the table columns' names
     gridColumns: ['ID', 'Compañía'],
+    ////modify this to change the table rows' values
     gridData: [
       { ID: '0', Compañía: "Zara" },
       { ID: '1', Compañía: "Nestle" },
@@ -71,7 +75,7 @@ var demo = new Vue({
   },
   methods:{
     signUpCompany(){
-        //da de alta con conexión a backend
+        //there will be a method here to establish connection with backend and sign up the companies' id and name, some day....
     }
   }
 })
